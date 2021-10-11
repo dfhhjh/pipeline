@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="gb2312" standalone="yes" ?>
+<config>
+  <admin_proxy>
+    <!--- 只有一个工作service的service
+		service_name  service名
+	-->
+    <one_worker_svcs>
+		<service_name value="svc_zone_pay" />
+	</one_worker_svcs>
+
+    <server_addrs>
+      <!--每个大区的名称，地址和端口-->
+      <!--游戏部分-->
+      <server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_1">
+        <!--service_box display="aas">
+					<service name="svc_anti_addiction" display="aas" />
+				</service_box -->
+        <service_box display="dreamer" bit64="false">
+          <service name="svc_dreamer" display="dreamer"/>
+        </service_box>
+        <service_box display="zone">
+          <service name="svc_zone" display="zone_1" args="-id 1" opt="-delay 10"/>
+        </service_box>
+        <service_box display="zone_pay" bit64="false">
+          <service name="svc_zone_pay" display="zone_pay_1" args="-id 210"/>
+        </service_box>
+        <service_box display="zone_pay2" bit64="false">
+          <service name="svc_zone_pay" display="zone_pay_2" args="-id 211"/>
+        </service_box>
+		<!--linux_only
+        <service_box display="zone_pay" bit64="true">
+          <service name="svc_zone_pay" display="zone_pay_2" args="-id 211"/>
+        </service_box>
+		-->
+		<!-- 内网增加一个zone2.仿现网环境,现网收集不需要这个东西 -->
+		<service_box display="zone2">
+          <service name="svc_zone" display="zone_2" args="-id 2 -listen_port 31438 -listen_port_other 31439 -listen_port_game_proxy 31440 -listen_port_bs 31441 -listen_port_acc_unreg 9004  -delay 50"/>
+        </service_box>
+        <service_box display="rank">
+          <service name="svc_rank" display="rank"/>
+        </service_box>
+        <service_box display="game" bit64="false">
+          <service name="svc_game" display="game" args="-id 232 -iswedding false"/>
+        </service_box>
+		<service_box display="game_zone_transfer" bit64="false">
+          <service name="svc_game" display="game_zone_transfer" args="-id 105 -is_zonetransfer_assist true"/>
+        </service_box>
+		<!--
+        <service_box display="game_2"  bit64="false">
+					<service name="svc_game" display="game2" args="-iswedding false -id 201 -listen_port 31514 -proxy_port 10087"/>
+				</service_box>
+		-->
+        <!--
+				<service_box display="temporary_ktv"  bit64="false">
+					<service name="svc_game" display="temporary_ktv" args="-tempktv true -id 10201"/>
+				</service_box>
+				-->
+        <service_box display="game_community"  bit64="false">
+          <service name="svc_game" display="game_community" args="-id 1000 -iscommunity true"/>
+        </service_box>
+        <service_box display="game_wedd_comm"  bit64="false">
+          <service name="svc_game" display="game_wedd_comm" args="-id 102 -isweddcomm true"/>
+        </service_box>
+        <service_box display="game_vip_wedding"  bit64="false">
+          <service name="svc_game" display="game_vip_wedding" args="-id 103 -isvipwedding true"/>
+        </service_box>
+        <!--
+				<service_box display="game_tga"  bit64="false">
+					<service name="svc_game" display="game_tga" args="-id 150 -istga true"/>
+				</service_box>
+				-->
+        <service_box display="zone_proxy">
+          <service name="svc_zone_proxy" display="zone_proxy"/>
+        </service_box>
+				<!--
+				<service_box display="log">
+					<service name="svc_log" display="log" args="-isdivtable true"/>
+				</service_box>
+				<service_box display="log2">
+					<service name="svc_log" display="log2" args="-listen_port 3101 -id 2"/>
+				</service_box>
+				-->
+        <service_box display="transmit">
+          <service name="svc_transmit" display="transmit"/>
+        </service_box>
+        <!--<service_box display="transmit_video">
+          <service name="svc_transmit_video" display="transmit_video"/>
+        </service_box>-->
+        <service_box display="transmit_proxy">
+          <service name="svc_transmit_proxy" display="transmit_proxy" args="-id 1"/>
+        </service_box>
+        <service_box display="transmit_center">
+          <service name="svc_transmit_center" display="transmit_center"/>
+        </service_box>
+        <service_box display="guild" bit64="false">
+          <service name="svc_guild" display="guild"/>
+        </service_box>
+        <service_box display="db" bit64="false">
+          <service name="svc_db" display="db"/>
+        </service_box>
+        <service_box display="db_1" bit64="false">
+          <service name="svc_db" display="db_1" args="-id 1 -listen_port 2002"/>
+        </service_box>
+        <service_box display="game_proxy">
+          <service name="svc_game_proxy" display="game_proxy" args="" /> 
+        </service_box>
+        <service_box display="version">
+          <service name="svc_version" display="version"/>
+        </service_box>
+        <service_box display="mall">
+          <service name="svc_mall" display="mall" args="-master 1 -use_portal true"/>
+        </service_box>
+        <service_box display="lottery">
+          <service name="svc_lottery" display="lottery" args=""/>
+        </service_box>
+        <service_box display="sns">
+          <service name="svc_sns" display="sns"/>
+        </service_box>
+        <service_box display="sns_ext" bit64="false">
+          <service name="svc_sns_ext" display="sns_ext"/>
+        </service_box>
+        <service_box display="auction">
+          <service name="svc_auction" display="auction"/>
+        </service_box>
+        <service_box display="sect">
+          <service name="svc_sect" display="sect"/>
+        </service_box>
+        <service_box display="cache">
+          <service name="svc_cache" display="cache" args="-id 200"/>
+        </service_box>
+        <service_box display="qstore">
+          <service name="svc_qstore" display="qstore"/>
+        </service_box>
+        <service_box display="qstore_ext">
+          <service name="svc_qstore_ext" display="qstore_ext"/>
+        </service_box>
+        <service_box display="qqweiblog">
+          <service name="svc_qqweiblog" display="qqweiblog"/>
+        </service_box>
+        <service_box display="ktv_center">
+          <service name="svc_ktv_center" display="ktv_center"/>
+        </service_box>
+        <service_box display="ktv_server">
+          <service name="svc_ktv_server" display="ktv_server" args="-nosleep -id 1"/>
+        </service_box>
+        <service_box display="search">
+          <service name="svc_search" display="search"/>
+        </service_box>
+        <service_box display="chat">
+          <service name="svc_chat" display="chat"/>
+        </service_box>
+		<!-- idip 默认关闭 
+        <service_box display="idip1">
+					<service name="svc_idip" display="idip1" args="-id 500 -listen_port 10893" />
+		</service_box>
+		-->
+        <!--linux_only service_box display="idip2">
+					<service name="svc_idip" display="idip2" args="-id 501 -listen_port 10906" />
+				</service_box linux_only-->
+        <!--linux_only service_box display="idip3">
+					<service name="svc_idip" display="idip3" args="-id 502 -listen_port 10908" />
+				</service_box linux_only-->
+        <!--linux_only service_box display="idip4">
+					<service name="svc_idip" display="idip4" args="-id 503 -listen_port 10909" />
+				</service_box linux_only-->
+        <!--linux_only service_box display="idip5">
+					<service name="svc_idip" display="idip5" args="-id 504 -listen_port 10910" />
+				</service_box linux_only-->
+        <!--linux_only service_box display="idip6">
+					<service name="svc_idip" display="idip6" args="-id 505 -listen_port 10911" />
+				</service_box linux_only-->
+        <service_box display="homeland1">
+          <service name="svc_homeland" display="homeland1" args="-id 151 -listen_port 10891  -tsmit_port 10904"/>
+        </service_box>
+        <service_box display="homeland2">
+          <service name="svc_homeland" display="homeland2" args="-id 152 -listen_port 10892  -tsmit_port 10905"/>
+        </service_box>
+        <service_box display="homeland_transmit">
+          <service name="svc_homeland_transmit" display="homeland_transmit"/>
+        </service_box>
+        <!--linux_only service_box display="tacc_server" bit64="true">
+					<service name="svc_tacc" display="tacc_server" args="-id 151 -listen_port 10900"/>
+				</service_box linux_only-->
+        <service_box display="info">
+          <service name="svc_info" display="info_Server" args="-id 97"/>
+        </service_box>
+        <service_box display="push">
+          <service name="svc_push" display="push" />
+        </service_box>
+        <service_box display="globalk_globalproxy" bit64="false">
+          <service name="svc_globalpk_globalproxy" display="globalk_globalproxy" args="-id 1" />
+        </service_box>
+        <service_box display="common_transmit"  bit64="false">
+          <service name="svc_common_transmit" display="common_transmit"/>
+        </service_box>
+        <service_box display="ringteam"  bit64="false">
+          <service name="svc_ringteam_server" display="ringteam"/>
+        </service_box>
+        <service_box display="game_instancing" bit64="false">
+          <service name="svc_game" display="game_instancing" args="-id 11001 -isringinstancing true"/>
+        </service_box>
+        <service_box display="qqbar_privilege_global_center" bit64="false">
+          <service name="svc_qqbar_privilege_global_center_server" display="qqbar_privilege_global_center"/>
+        </service_box>
+        <service_box display="video_process_proxy_1" bit64="false">
+          <service name="svc_video_process_proxy" display="video_process_proxy1" args="-id 1" />
+        </service_box>
+		
+		<service_box display="sw_net_bar_server1">
+          <service name="svc_sw_net_bar_server" display="sw_net_bar_server1" args="-id 1" />
+        </service_box>
+		
+		<service_box display="match_select_server1" bit64="false">
+          <service name="svc_match_select_server" display="match_select_server1" args="" />
+        </service_box>
+		<service_box display="match_select_server2" bit64="false">
+          <service name="svc_match_select_server" display="match_select_server2" args="-id 2 -listen_common_transmit 20029 -listen_match_select_summary 20030" />
+        </service_box>
+		<service_box display="match_select_summary_server" bit64="false">
+          <service name="svc_match_select_summary_server" display="match_select_summary_server" args="-id 1" />
+        </service_box>
+
+		
+		<!--<service_box display="sw_net_bar_server2"> -->
+       <!--   <service name="svc_sw_net_bar_server" display="sw_net_bar_server2" args="-id 2 -listen_port 4669" />-->
+        <!--</service_box> -->
+		
+        <!-- 				<service_box display="video_process_proxy_2" bit64="false">
+					<service name="svc_video_process_proxy" display="video_process_proxy2" args="-id 2" />
+				</service_box> -->
+		<service_box display="lgs_cache_server" bit64="false">
+          <service name="svc_lgs_cache_server" display="lgs_cache_server"/>
+        </service_box>
+		<service_box display="es_proxy_server1" bit64="false">
+			<service name="svc_es_proxy_server" display="es_proxy_server" args="-id 1"/>
+		</service_box>
+		
+		<service_box display="small_group_server_1" bit64="false">
+          <service name="svc_small_group" display="small_group_server_1" args="" />
+        </service_box>
+		<service_box display="small_group_server_2" bit64="false">
+          <service name="svc_small_group" display="small_group_server_2" args="-id 2" />
+        </service_box>
+		<service_box display="small_group_summary" bit64="false">
+          <service name="svc_small_group_summary" display="small_group_summary" args="" />
+        </service_box>
+		<service_box display="verify_server_1" bit64="false">
+          <service name="svc_verify_server" display="verify_server_1" args="-id 1" />
+        </service_box>
+		<service_box display="common_activity_server" bit64="false">
+          <service name="svc_common_activity_server" display="common_activity_server" args="-id 1" />
+        </service_box>	
+        <!--<service_box display="account_unregister">
+          <service name="svc_account_unregister_server" display="account_unregister" args="-id 1"/>
+        </service_box>-->
+      </server>
+
+      <!--跨服相关-->
+      <server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_GLOBAL_1">
+        <service_box display="globalpk_coordinate" bit64="false">
+          <service name="svc_globalpk_coordinate" display="globalpk_coordinate"/>
+        </service_box>
+        <service_box display="globalpk_transmitcenter" bit64="false">
+          <service name="svc_globalpk_transmitcenter" display="globalpk_transmitcenter"/>
+        </service_box>
+        <service_box display="globalpk_db">
+          <service name="svc_globalpk_db" display="globalpk_db" args="-id 1"/>
+        </service_box>
+		<service_box display="globalpk_db_app1">
+          <service name="svc_globalpk_db" display="globalpk_db_app1" args="-id 1 -app true"/>
+        </service_box>
+        <service_box display="globalpk_db_app2">
+          <service name="svc_globalpk_db" display="globalpk_db_app2" args="-id 2 -app true"/>
+        </service_box>
+        <service_box display="globalpk_match" bit64="false">
+          <service name="svc_globalpk_match" display="globalpk_match" args="-id 1 -listen_port 10014"/>
+        </service_box>				 
+        <service_box display="globalpk_rank">
+          <service name="svc_globalpk_rank" display="globalpk_rank"/>
+        </service_box>				
+        <service_box display="globalk_community" bit64="false">
+          <service name="svc_global_community" display="globalk_community" args="-id 2001" />
+        </service_box>
+		<!--
+        <service_box display="globalk_community2" bit64="false">
+          <service name="svc_global_community" display="globalk_community2" args="-id 2002 -listen_port 10018" />
+        </service_box>
+		-->
+        <service_box display="global_unit_data_mgr" bit64="false">
+          <service name="svc_global_unitdata_mgr_server" display="global_unit_data_mgr" />
+        </service_box>
+		<service_box display="global_lgs_proxy_server" bit64="false">
+          <service name="svc_global_lgs_proxy_server" display="global_lgs_proxy_server"/>
+        </service_box>
+        <service_box display="global_lottery" bit64="false">
+          <service name="svc_global_lottery_server" display="global_lottery" />
+        </service_box>
+        <service_box display="global_team" bit64="false">
+          <service name="svc_global_team_server" display="global_team" />
+        </service_box>
+        <service_box display="global_async_pk" bit64="false">
+          <service name="svc_global_async_pk_server" display="global_async_pk" />
+        </service_box>
+        <service_box display="global_snake" bit64="false">
+          <service name="svc_globalsnakes_match_server" display="global_snake1"  args="-id 1"/>
+        </service_box>
+		  <!--<service_box display="global_community_magic_world" bit64="false">
+          <service name="svc_global_community" display="global_community_magic_world" args="-id 2160 -ismagicworld true -listen_port 12120"/>
+        </service_box>-->
+        <!--<service_box display="global_community_fairy_island" bit64="false">
+          <service name="svc_global_community" display="global_community_fairy_island" args="-id 2186 -isfairyisland true -listen_port 12121"/>
+        </service_box>
+		-->
+        <service_box display="global_lord_logic" bit64="false">
+          <service name="svc_global_lord_logic_server" display="global_lord_logic" args="-id 1"/>
+        </service_box>
+        <service_box display="global_lord_match" bit64="false">
+          <service name="svc_global_lord_match_server" display="global_lord_match" />
+        </service_box>
+		<service_box display="global_binding_server1" bit64="false">
+		  <service name="svc_global_binding_server" display="global_binding_server1" args="-id 1"/>
+		</service_box>
+		<service_box display="global_binding_server2" bit64="false">
+		  <service name="svc_global_binding_server" display="global_binding_server2" args="-id 2 -listen_port 11032"/>
+		</service_box>
+        <service_box display="global_adapt_transmit_server" bit64="false">
+          <service name="svc_global_adapt_transmit_server" display="global_adapt_transmit_server" />
+        </service_box>
+		<!--<service_box display="global_hide_and_seek" bit64="false">
+          <service name="svc_global_community" display="global_hide_and_seek" args="-id 2134 -ishideandseek true -listen_port 12134"/>
+        </service_box>
+		-->
+		<service_box display="global_pickmate_server1" bit64="false">
+          <service name="svc_global_common_server" display="global_common_server1" args="-id 1"/>
+        </service_box>
+		<service_box display="global_pickmate_server2" bit64="false">
+          <service name="svc_global_common_server" display="global_common_server2" args="-id 2"/>
+        </service_box>
+		<service_box display="global_pickmate_server3" bit64="false">
+          <service name="svc_global_common_server" display="global_common_server3" args="-id 3"/>
+        </service_box>
+		<service_box display="global_pickmate_server4" bit64="false">
+          <service name="svc_global_common_server" display="global_common_server4" args="-id 4"/>
+        </service_box>		
+		<service_box display="global_pickmate_summary_server" bit64="false">
+          <service name="svc_global_common_server" display="global_common_server5" args="-id 5"/>
+        </service_box>	
+		
+		<service_box display="global_yujian_server1" bit64="false">
+          <service name="svc_global_yujian_server" display="global_yujian_server1" args="-id 1"/>
+        </service_box>
+		<service_box display="global_yujian_server2" bit64="false">
+          <service name="svc_global_yujian_server" display="global_yujian_server2" args="-id 2"/>
+        </service_box>
+		<service_box display="global_yujian_server3" bit64="false">
+          <service name="svc_global_yujian_server" display="global_yujian_server3" args="-id 3"/>
+        </service_box>
+		<service_box display="global_yujian_server4" bit64="false">
+          <service name="svc_global_yujian_server" display="global_yujian_server4" args="-id 4"/>
+        </service_box>
+		<service_box display="global_yujian_summary_server" bit64="false">
+          <service name="svc_global_yujian_summary_server" display="global_yujian_summary_server" args=""/>
+        </service_box>
+		<service_box display="global_role_info_server" bit64="false">
+          <service name="svc_global_role_info_server" display="global_role_info_server" args="-id 1 -is_review false"/>
+        </service_box>
+		<service_box display="global_verify_server" bit64="false">
+          <service name="svc_global_verify_server" display="global_verify_server" args="-id 1"/>
+        </service_box>
+		<service_box display="global_push_server" bit64="false">
+          <service name="svc_global_push_server" display="global_push_server" />
+        </service_box>
+		<service_box display="global_user_proxy" bit64="false">
+          <service name="svc_global_user_proxy" display="global_user_proxy" />
+        </service_box>
+		<service_box display="theme_chat1" bit64="false">
+          <service name="svc_theme_chat" display="theme_chat" args="-id 10001 -listen_port 9972"/>
+        </service_box>
+		<service_box display="theme_chat2" bit64="false">
+          <service name="svc_theme_chat" display="theme_chat" args="-id 10002 -listen_port 9973"/>
+        </service_box>
+		<service_box display="global_speech_recongnition_server1" bit64="false">
+          <service name="svc_speech_recongnition_server" display="global_speech_recongnition_server1" args="-id 1"/>
+        </service_box>
+		<service_box display="global_speech_recongnition_server2" bit64="false">
+          <service name="svc_speech_recongnition_server" display="global_speech_recongnition_server2" args="-id 2"/>
+        </service_box>
+      </server>
+      <!--视频部分-->
+      <server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_VIDEO_1">
+        <service_box display="video_center_server1" bit64="true">
+          <service name="svc_center_server64" display="video_center_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_center_server2" bit64="true">
+          <service name="svc_center_server64" display="video_center_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_db_server1">
+          <service name="svc_video_db_server_new" display="video_db_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_db_server2">
+          <service name="svc_video_db_server_new" display="video_db_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_transmit_server1" bit64="true">
+          <service name="svc_video_transmit_server64" display="video_transmit_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_transmit_server2" bit64="true">
+          <service name="svc_video_transmit_server64" display="video_transmit_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_user_server1" bit64="true">
+          <service name="svc_user_server64" display="video_user_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_user_server2" bit64="true">
+          <service name="svc_user_server64" display="video_user_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_room_server1" bit64="true">
+          <service name="svc_room_server_new64" display="video_room_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_room_server2" bit64="true">
+          <service name="svc_room_server_new64" display="video_room_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_guild_server1" bit64="true">
+          <service name="svc_video_guild_server" display="video_guild_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_guild_server2" bit64="true">
+          <service name="svc_video_guild_server" display="video_guild_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_guild_summary_server1" bit64="true">
+          <service name="svc_video_guild_summary_server" display="video_guild_summary_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_guild_summary_server2" bit64="true">
+          <service name="svc_video_guild_summary_server" display="video_guild_summary_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_proxy_server1" bit64="true">
+          <service name="svc_video_proxy64" display="video_proxy_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_proxy_server2" bit64="true">
+          <service name="svc_video_proxy64" display="video_proxy_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_mall_server1">
+          <service name="svc_video_mall_server" display="video_mall_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_mall_server2">
+          <service name="svc_video_mall_server" display="video_mall_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_qstore_server1">
+          <service name="svc_video_qstore" display="sqtore_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_qstore_server2">
+          <service name="svc_video_qstore" display="sqtore_server" args="-id 1"/>
+        </service_box>
+		
+		<service_box display="video_qstore_ext_server1">
+          <service name="svc_video_qstore_ext" display="video_qstore_ext_server1" args="-id 0"/>
+        </service_box>
+        <service_box display="video_qstore_ext_server2">
+          <service name="svc_video_qstore_ext" display="video_qstore_ext_server2" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_sig_server1" bit64="true">
+          <service name="svc_video_sig_verify_server" display="video_sig_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_sig_server2" bit64="true">
+          <service name="svc_video_sig_verify_server" display="video_sig_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_user_proxy1" bit64="true">
+          <service name="svc_user_proxy64" display="video_user_proxy" args="-id 0"/>
+        </service_box>
+        <service_box display="video_user_proxy2" bit64="true">
+          <service name="svc_user_proxy64" display="video_user_proxy" args="-id 1 -listen_port 31001"/>
+        </service_box>
+
+        <service_box display="video_broadcast_server1" bit64="true">
+          <service name="svc_broadcast_server" display="video_broadcast_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_broadcast_server2" bit64="true">
+          <service name="svc_broadcast_server" display="video_broadcast_server" args="-id 1"/>
+        </service_box>
+
+        <service_box display="video_server1" bit64="true">
+          <service name="svc_video_server64" display="video_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_server2" bit64="true">
+          <service name="svc_video_server64" display="video_server" args="-id 1 -listen_client_port 29840 -listen_client_ping_port 29841 -listen_udp_port 29842 -listen_cdn_port_start 29820 -listen_cdn_port_end 29822 -listen_service_room_port 19958"/>
+        </service_box>
+
+        <service_box display="gateway_server1" bit64="true">
+          <service name="svc_video_mgc_gateway" display="gateway_server" args="-id 0"/>
+        </service_box>
+
+        <service_box display="video_log_server1" bit64="true">
+          <service name="svc_video_log64" display="video_log_server" args="-id 0"/>
+        </service_box>
+		<service_box display="video_log_server2" bit64="true">
+          <service name="svc_video_log64" display="video_log_server" args="-id 1"/>
+        </service_box>
+        <service_box display="video_room_manager_server" bit64="true">
+          <service name="svc_room_manager_server_new64" display="video_room_manager_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_activity_server" bit64="true">
+          <service name="svc_video_activity_server64" display="video_activity_server" args="-id 0"/>
+        </service_box> 
+        <service_box display="video_idip">
+          <service name="svc_video_idip" display="video_idip"/>
+        </service_box>
+        <service_box display="video_rank_server">
+          <service name="svc_video_rank" display="video_rank" args="-id 0"/>
+        </service_box>
+        <service_box display="video_data_server" bit64="true">
+          <service name="svc_video_data64" display="video_data" args="-id 0"/>
+        </service_box>
+        <service_box display="video_push" bit64="true">
+          <service name="svc_video_push" display="video_push" args="-id 0" />
+        </service_box>
+        <service_box display="video_http1">
+          <service name="svc_video_http_server" display="video_http" args="-id 0"/>
+        </service_box>
+        <service_box display="video_http2">
+          <service name="svc_video_http_server" display="video_http" args="-id 1"/>
+        </service_box>
+        <service_box display="video_search_server" bit64="true">
+          <service name="svc_video_search_server64" display="video_search_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_statisitics_server" bit64="true">
+          <service name="svc_video_statisitics_server64" display="video_statisitics_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_h5_proxy" bit64="true">
+          <service name="svc_video_h5_proxy64" display="video_h5_proxy" args="-id 0"/>
+        </service_box>
+        <service_box display="video_offline_manage_server" bit64="true">
+          <service name="svc_video_offline_manage_server" display="video_offline_manage_server" args="-id 0"/>
+        </service_box>
+        <service_box display="video_offline_manage_server2" bit64="true">
+          <service name="svc_video_offline_manage_server" display="video_offline_manage_server2" args="-id 1"/>
+        </service_box>
+		<service_box display="video_upload_gif_server1" bit64="false">
+          <service name="svc_video_upload_gif_server" display="video_upload_gif_server1" args="-id 0"/>
+        </service_box>
+		<service_box display="video_upload_gif_server2" bit64="false">
+          <service name="svc_video_upload_gif_server" display="video_upload_gif_server2" args="-id 1 -listen_port 41001"/>
+        </service_box>
+		<service_box display="video_upload_gif_server3" bit64="false">
+          <service name="svc_video_upload_gif_server" display="video_upload_gif_server3" args="-id 2 -listen_port 41002"/>
+        </service_box>
+		<service_box display="video_upload_gif_server4" bit64="false">
+          <service name="svc_video_upload_gif_server" display="video_upload_gif_server4" args="-id 3 -listen_port 41003"/>
+        </service_box>
+		<service_box display="video_customer_service_server" bit64="true">
+          <service name="svc_video_customer_service_server" display="video_customer_service_server" args="-id 0"/>
+        </service_box>
+        <service_box display="short_video_anchor_server1" bit64="true">
+          <service name="svc_short_video_anchor_server64" display="short_video_anchor_server" args="-id 0"/>
+        </service_box>
+        <service_box display="short_video_anchor_server2" bit64="true">
+          <service name="svc_short_video_anchor_server64" display="short_video_anchor_server" args="-id 1"/>
+        </service_box>
+		<service_box display="short_video_summary_server1" bit64="true">
+          <service name="svc_short_video_summary_server" display="short_video_summary_server1" args="-id 0"/>
+        </service_box>
+		<service_box display="short_video_summary_server2" bit64="true">
+          <service name="svc_short_video_summary_server" display="short_video_summary_server2" args="-id 1"/>
+        </service_box>
+		<service_box display="short_video_upload_server" bit64="true">
+          <service name="svc_short_video_upload_server" display="short_video_upload_server" args="-id 0"/>
+        </service_box>
+		<service_box display="video_transfer_control_server" bit64="true">
+          	<service name="svc_video_transfer_control_server64" display="video_transfer_control_server" args="-id 0"/>
+        </service_box>
+		<service_box display="short_video_search_server1" bit64="true">
+          <service name="svc_short_video_search_server" display="short_video_search_server" args="-id 0"/>
+        </service_box>
+		<service_box display="short_video_search_server2" bit64="true">
+          <service name="svc_short_video_search_server" display="short_video_search_server" args="-id 1"/>
+        </service_box>
+		<service_box display="video_cloud_proxy_server1" bit64="true">
+          <service name="svc_video_cloud_proxy_server" display="video_cloud_proxy_server" args="-id 0"/>
+        </service_box>
+		<service_box display="video_cloud_proxy_server2" bit64="true">
+          <service name="svc_video_cloud_proxy_server" display="video_cloud_proxy_server" args="-id 1"/>
+        </service_box>
+		<service_box display="global_room_player_server" bit64="true">
+          <service name="svc_global_room_player_server" display="global_room_player_server" args="-id 0"/>
+        </service_box>
+		<service_box display="dump_collector_server" bit64="true">
+          <service name="svc_dump_collector_server" display="dump_collector_server" args="-id 0"/>
+        </service_box>
+		<service_box display="video_account_unregister_server" bit64="true">
+			  <service name="svc_video_account_unregister_server64" display="video_account_unregister_server" args="-id 0"/>
+		</service_box>
+      </server>
+	  
+	  <server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_GLOBAL_DANCE_1">
+		<service_box display="global_dance_match1" bit64="false">
+          <service name="svc_global_dance_match_server" display="global_dance_match1"  args="-id 1"/>
+        </service_box>
+        <service_box display="global_dance_coordinate1" bit64="false">
+          <service name="svc_global_dance_coordinate_server" display="global_dance_coordinate1"  args="-id 1"/>
+        </service_box>
+        <service_box display="global_dance_transmitcenter1" bit64="false">
+          <service name="svc_global_dance_transmit_center_server" display="global_dance_transmitcenter1"  args="-id 1"/>
+        </service_box>
+        <service_box display="global_dance_lottery" bit64="false">
+          <service name="svc_global_lottery_server" display="global_dance_lottery"  args="-global_dance_lottery true"/>
+        </service_box>
+	  </server>
+		
+	<server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_ZONE_TRANSFER_1">
+		<service_box display="zone_transfer">
+          <service name="svc_zone_transfer" display="zone_transfer" args="-id 1" opt="-delay 300"/>
+        </service_box>
+		<service_box display="zone_transfer2">
+          <service name="svc_zone_transfer" display="zone_transfer2" args="-id 2 -listen_port 20027" opt="-delay 300"/>
+        </service_box>
+	 </server>
+		<server name="$IP_APP_BOX_1" ip="$IP_APP_BOX_1" port="$PORT_APP_BOX_GLOBAL_HALL_1">
+			<service_box display="global_room_match_1" bit64="false">
+				<service name="svc_global_dance_match_server" display="global_room_match"  args="-id 1 -listen_port 19988 -global_room_match true"/>
+			</service_box>
+			<service_box display="global_room_match_2" bit64="false">
+				<service name="svc_global_dance_match_server" display="global_room_match"  args="-id 2 -listen_port 19989 -global_room_match true"/>
+			</service_box>
+			<service_box display="global_zone_server_1" bit64="false">
+				<service name="svc_global_zone_server" display="global_zone_server" args="-id 1"/>
+			</service_box>
+			<service_box display="global_zone_server_2" bit64="false">
+				<service name="svc_global_zone_server" display="global_zone_server" args="-id 2"/>
+			</service_box>
+			<service_box display="global_game_server_1" bit64="false">
+				<service name="svc_global_game_server" display="global_game_server" args="-id 1"/>
+			</service_box>
+			<!--
+			<service_box display="global_game_server_2" bit64="false">
+				<service name="svc_global_game_server" display="global_game_server" args="-id 2 -GlobalGameListenGateway 19987"/>
+			</service_box>
+			-->
+			<service_box display="global_love_wedding_common_1" bit64="false">
+				<service name="svc_global_game_server" display="global_love_wedding_common" args="-id 1001 -isweddingcommon true -GlobalGameListenGateway 19982"/>
+			</service_box>
+			<!--
+			<service_box display="global_love_wedding_common_2" bit64="false">
+				<service name="svc_global_game_server" display="global_love_wedding_common" args="-id 1002 -isweddingcommon true -GlobalGameListenGateway 19979"/>
+			</service_box>
+			-->
+			<service_box display="global_love_wedding_vip_1" bit64="false">
+				<service name="svc_global_game_server" display="global_love_wedding_vip" args="-id 1018 -isweddingvip true -GlobalGameListenGateway 19981"/>
+			</service_box>
+			<!--
+			<service_box display="global_love_wedding_vip_2" bit64="false">
+				<service name="svc_global_game_server" display="global_love_wedding_vip" args="-id 1019 -isweddingvip true -GlobalGameListenGateway 19978"/>
+			</service_box>
+			-->
+			<service_box display="global_gateway_server_1" bit64="false">
+				<service name="svc_global_gateway_server" display="global_gateway_server" args="-id 1"/>
+			</service_box>
+			<service_box display="global_gateway_server_2" bit64="false">
+				<service name="svc_global_gateway_server" display="global_gateway_server" args="-id 2 -listen_port 10042 -x5_listen_port 10043"/>
+			</service_box>
+			<service_box display="global_transmit_server_1" bit64="false">
+				<service name="svc_global_transmit_server" display="global_transmit_server" args="-id 1"/>
+			</service_box>
+			<service_box display="global_transmit_server_2" bit64="false">
+				<service name="svc_global_transmit_server" display="global_transmit_server" args="-id 2 -GlobalTransmitListenGame 19985 -GlobalTransmitListenGlobal 19986"/>
+			</service_box>
+			<service_box display="global_hall_unique_server" bit64="false">
+				<service name="svc_global_hall_unique_server" display="global_hall_unique_server" args="-id 1" />
+			</service_box>
+			<service_box display="global_hall_db_server_1" bit64="false">
+				<service name="svc_global_hall_db" display="global_hall_db_server" args="-id 1"/>
+			</service_box>
+			<service_box display="global_hall_db_server_2" bit64="false">
+				<service name="svc_global_hall_db" display="global_hall_db_server" args="-id 2"/>
+			</service_box>
+		</server>
+    </server_addrs>
+  </admin_proxy>
+</config>
